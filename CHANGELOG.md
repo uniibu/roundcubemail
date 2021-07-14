@@ -1,5 +1,10 @@
 # Changelog Roundcube Webmail
 
+## Unreleased
+
+- Support displaying RTF content (including encapsulated HTML) from a TNEF attachment
+- Fix size of Mailvelope iframe for PGP-inlined mail, again (#8126)
+
 ## Release 1.5-rc
 
 - Upgrade to TinyMCE 5.8.2
