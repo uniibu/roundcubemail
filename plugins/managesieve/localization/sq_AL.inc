@@ -10,22 +10,19 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/plugin-managesieve/
 */
-
 
 $labels['filters'] = 'Filtra';
 $labels['managefilters'] = 'Administroni filtra për postë ardhëse';
-$labels['filtername'] = 'Emri i filtrit';
+$labels['filtername'] = 'Emër filtri';
 $labels['newfilter'] = 'Filtër i ri';
 $labels['filteradd'] = 'Shtoni filtër';
 $labels['filterdel'] = 'Fshije filtrin';
-$labels['rules'] = 'Rregullat';
-$labels['actions'] = 'Veprimet';
+$labels['rules'] = 'Rregulla';
+$labels['actions'] = 'Veprime';
 $labels['scope'] = 'Shtrirje';
-$labels['moveup'] = 'Levize lart';
-$labels['movedown'] = 'Levize poshtë';
+$labels['moveup'] = 'Lëvize sipër';
+$labels['movedown'] = 'Lëvize poshtë';
 $labels['filterallof'] = 'që ka përputhje me krejt rregullat vijues';
 $labels['filteranyof'] = 'që ka përputhje me cilindo nga rregullat vijues';
 $labels['filterany'] = 'krejt mesazhet';
@@ -47,7 +44,6 @@ $labels['mime-message'] = 'mesazh';
 $labels['mime-anychild'] = 'çfarëdo';
 $labels['mime-type'] = 'lloj';
 $labels['mime-subtype'] = 'nënlloj';
-$labels['mime-contenttype'] = 'lloj lënde';
 $labels['mime-param'] = 'parametër';
 $labels['addrule'] = 'Shtoni rregull';
 $labels['delrule'] = 'Fshije rregullin';
@@ -196,7 +192,7 @@ $labels['spamtestislessthanequal'] = 'është më i vogël ose baras me';
 $labels['spamtestequals'] = 'është baras me';
 $labels['spamtestnotequals'] = 's’është baras me';
 $labels['spamtestisunknown'] = 'është i panjohur';
-$labels['vacation'] = 'Jo Në Zyrë';
+$labels['vacation'] = 'Jashtë zyre';
 $labels['vacation.reply'] = 'Mesazh përgjigjeje';
 $labels['vacation.advanced'] = 'Rregullime të mëtejshme';
 $labels['vacation.from'] = 'Adresë dërguesi për përgjigje';
@@ -282,3 +278,4 @@ $messages['duplicate.conflict.err'] = 'S’lejohet përdorimi i njëkohshëm i k
 $messages['disabledaction'] = 'Veprim jo i lejuar.';
 $messages['lastindexempty'] = 'Treguesi është i domosdoshëm kur numërohet nga fundi';
 $messages['noflagset'] = 'Duhet përzgjedhur të paktën një shenjë';
+$messages['saving.actionordererror'] = 'Veprim \'$previous\' duhet të jetë pas veprimit \'$current\'.';

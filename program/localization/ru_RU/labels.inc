@@ -10,10 +10,7 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/labels/
 */
-
 
 $labels['welcome'] = 'Добро пожаловать в $product!';
 $labels['username'] = 'Имя пользователя';
@@ -134,6 +131,7 @@ $labels['markread'] = 'Как прочитанное';
 $labels['markunread'] = 'Как непрочитанное';
 $labels['markflagged'] = 'Установить флаг';
 $labels['markunflagged'] = 'Снять флаг';
+$labels['markundeleted'] = 'Как не удаленное';
 $labels['moreactions'] = 'Дополнительные действия...';
 $labels['markallread'] = 'Отметить все как прочтённые';
 $labels['folders-cur'] = 'Только выбранная папка';
@@ -244,6 +242,7 @@ $labels['charset'] = 'Кодировка';
 $labels['editortype'] = 'Редактор';
 $labels['returnreceipt'] = 'Запрос ответа';
 $labels['dsn'] = 'Уведомление о состоянии доставки';
+$labels['keepformatting'] = 'Сохранить форматирование';
 $labels['mailreplyintro'] = '$sender писал(а) $date:';
 $labels['originalmessage'] = 'Исходное сообщение';
 $labels['selectimage'] = 'Выбрать изображение';
@@ -261,7 +260,6 @@ $labels['keylength'] = 'Бит';
 $labels['keyexpired'] = 'С истёкщим сроком';
 $labels['keyrevoked'] = 'Отозван';
 $labels['bccinstead'] = 'Использовать BCC';
-$labels['addheader'] = 'Добавить получателя (заголовок)';
 $labels['insert'] = 'Вставить';
 $labels['insertcontact'] = 'Вставить контакт(ы)';
 $labels['recipient'] = 'Получатель';
@@ -396,7 +394,7 @@ $labels['edit'] = 'Правка';
 $labels['cancel'] = 'Отмена';
 $labels['save'] = 'Сохранить';
 $labels['delete'] = 'Удалить';
-$labels['discard'] = 'Отменить';
+$labels['discard'] = 'Удалить';
 $labels['continue'] = 'Продолжить';
 $labels['ok'] = 'ОК';
 $labels['rename'] = 'Переименовать';
@@ -553,8 +551,12 @@ $labels['defaultabook'] = 'Адресная книга по умолчанию';
 $labels['autocompletesingle'] = 'Пропускать дополнительные адреса в автозавершении';
 $labels['listnamedisplay'] = 'Выводить список контактов как';
 $labels['contactformmode'] = 'Режим формы Контакта';
+$labels['privatemode'] = 'Личный (домашний)';
+$labels['businessmode'] = 'Бизнес (рабочий)';
 $labels['collectedaddresses'] = 'Собранные контакты';
 $labels['collectedrecipients'] = 'Собранные получатели';
+$labels['collectedrecipientsopt'] = 'Сохранять получателей исходящей электронной почты в';
+$labels['collectedsendersopt'] = 'Сохранять доверенных отправителей в';
 $labels['trustedsenders'] = 'Надежные отправители';
 $labels['spellcheckbeforesend'] = 'Проверять орфографию перед отправкой';
 $labels['spellcheckoptions'] = 'Параметры проверки орфографии';

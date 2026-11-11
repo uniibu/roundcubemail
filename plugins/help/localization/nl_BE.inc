@@ -10,11 +10,10 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/plugin-help/
 */
 
 $labels['help'] = 'Help';
 $labels['about'] = 'Over';
 $labels['license'] = 'Licentie';
 $labels['csrfinfo'] = 'Lees meer over CSRF en hoe we u beschermen';
+$labels['arialabelhelpcontent'] = 'Help inhoud';

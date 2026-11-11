@@ -10,10 +10,7 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/labels/
 */
-
 
 $labels['welcome'] = 'ברוך בואך אל $product';
 $labels['username'] = 'שם משתמש';
@@ -134,6 +131,7 @@ $labels['markread'] = 'כנקראו';
 $labels['markunread'] = 'כלא נקראו';
 $labels['markflagged'] = 'כמסומן';
 $labels['markunflagged'] = 'כלא מסומן';
+$labels['markundeleted'] = 'כמי שלא נמחקו';
 $labels['moreactions'] = 'פעולות נוספות...';
 $labels['markallread'] = 'סימון כל ההודעות כאילו נקראו';
 $labels['folders-cur'] = 'רק התיקיה שנבחרה';
@@ -244,6 +242,7 @@ $labels['charset'] = 'קידוד';
 $labels['editortype'] = 'סוג עורך';
 $labels['returnreceipt'] = 'אישור קבלה';
 $labels['dsn'] = 'הודעה על מצב המסירה';
+$labels['keepformatting'] = 'המשך עריכה';
 $labels['mailreplyintro'] = ':כתב $sender, $date בתאריך';
 $labels['originalmessage'] = 'הודעה מקורית';
 $labels['selectimage'] = 'בחר תמונה';
@@ -261,7 +260,6 @@ $labels['keylength'] = 'סיביות';
 $labels['keyexpired'] = 'פג תוקף';
 $labels['keyrevoked'] = 'נשלל';
 $labels['bccinstead'] = 'שימוש במכותבים נסתרים';
-$labels['addheader'] = 'הוספת נמען (כותרת)';
 $labels['insert'] = 'הוספה בין ערכים';
 $labels['insertcontact'] = 'פה יש להוסיף איש קשר';
 $labels['recipient'] = 'הנמען';
@@ -575,6 +573,7 @@ $labels['replyallmode'] = 'ברירת המחדל של כפתור [מענה לכ�
 $labels['replyalldefault'] = 'מענה לכולם';
 $labels['replyalllist'] = 'מענה לרשימת תפוצה בלבד (אם קיימת)';
 $labels['allmessages'] = 'כל ההודעות';
+$labels['olderxdays'] = 'לפני יותר מ- x$ ימים';
 $labels['folder'] = 'תיקיה';
 $labels['folders'] = 'תיקיות';
 $labels['foldername'] = 'שם תיקיה';

@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  +-----------------------------------------------------------------------+
  | Localization file of the Roundcube Webmail Enigma plugin              |
  |                                                                       |
@@ -10,8 +10,6 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/roundcube/roundcube-webmail/plugin-enigma/
 */
 
 $labels['encryption'] = 'Шифрование';
@@ -123,6 +121,7 @@ $messages['keyremovesuccess'] = 'Ключ(и) успешно удален(ы)';
 $messages['keyremoveerror'] = 'Невозможно удалить выделенный(е) ключ(и).';
 $messages['keyimporttext'] = 'Вы можете импортировать закрытый и открытый ключ(и) или подписи отзыва в формате ASCII-Armor.';
 $messages['keyimportsearchtext'] = 'Вы можете искать открытые ключи по идентификатору ключа, имени пользователя или адресу электронной почты, а затем импортировать их напрямую.';
+$messages['keystoragenotice'] = 'Все открытые и закрытые ключи сохранены на сервере.';
 $messages['formerror'] = 'Заполните форму. Все поля обязательны!';
 $messages['passwordsdiffer'] = 'Пароли не совпадают!';
 $messages['keygenerateerror'] = 'Не удалось создать пару ключей';

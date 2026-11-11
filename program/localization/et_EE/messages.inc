@@ -10,8 +10,6 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/messages/
 */
 
 $messages['errortitle']  = 'Ilmnes tõrge!';
@@ -51,7 +49,7 @@ $messages['messagesaved'] = 'Kiri salvestatud mustanditesse';
 $messages['successfullysaved'] = 'Edukalt salvestatud';
 $messages['savingresponse'] = 'Salvestan vastuse teksti...';
 $messages['deleteresponseconfirm'] = 'Soovid valitud vastuse kustutada?';
-$messages['nocontactselected'] = 'Sa ei ole veel konakti valinud';
+$messages['nocontactselected'] = 'Sa ei ole veel kontakti valinud';
 $messages['addedsuccessfully'] = 'Kontakt lisati edukalt aadressiraamatusse';
 $messages['contactexists'] = 'Sama e-posti aadressiga kontakt on juba olemas.';
 $messages['contactnameexists'] = 'Sama nimega kontakt on juba olemas.';
@@ -146,7 +144,6 @@ $messages['nogroupassignmentschanged'] = 'Gruppide ülesandeid ei muudetud';
 $messages['importwait'] = 'Impordin, palun oota...';
 $messages['importformaterror'] = 'Import nurjus! Laaditud fail ei sisalda sobilikke andmeid.';
 $messages['importconfirm'] = '<b>Edukalt imporditud $inserted kontakti, $skipped olemasolevat sissekannet vahele jäetud</b>:<p><em>$names</em></p>';
-$messages['importconfirmskipped'] = '<b> $skipped olemasolevat kirjet jäeti vahele</b>';
 $messages['importmessagesuccess'] = '$nr kirja edukalt imporditud';
 $messages['importmessageerror'] = 'Import nurjus! Laaditud fail ei ole kirja ega postkasti fail';
 $messages['opnotpermitted'] = 'Tegevus pole lubatud!';
@@ -178,7 +175,7 @@ $messages['savedsearchcreated'] = 'Salvestatud otsing edukalt loodud.';
 $messages['savedsearchcreateerror'] = 'Salvestatud otsingu loomine nurjus.';
 $messages['messagedeleted'] = 'Kiri edukalt kustutatud';
 $messages['messagemoved'] = 'Kiri edukalt liigutatud';
-$messages['messagemovedtotrash'] = 'Kiri edukalt rämpsposti teisaldatud.';
+$messages['messagemovedtotrash'] = 'Kiri edukalt prügikasti teisaldatud.';
 $messages['messagecopied'] = 'Kiri edukalt kopeeritud';
 $messages['messagemarked'] = 'Kiri edukalt märgitud';
 $messages['autocompletechars'] = 'Sisesta vähemalt $min märki autom. lõpetuseks';

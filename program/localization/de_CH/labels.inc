@@ -10,10 +10,7 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/labels/
 */
-
 
 $labels['welcome'] = 'Willkommen bei $product';
 $labels['username'] = 'Benutzername';
@@ -22,7 +19,7 @@ $labels['server'] = 'Server';
 $labels['login'] = 'Login';
 $labels['oauthlogin'] = 'Anmelden mit $provider';
 $labels['menu'] = 'Menü';
-$labels['logout'] = 'Logout';
+$labels['logout'] = 'Abmelden';
 $labels['mail'] = 'E-Mail';
 $labels['settings'] = 'Einstellungen';
 $labels['addressbook'] = 'Adressbuch';
@@ -134,6 +131,7 @@ $labels['markread'] = 'Als gelesen';
 $labels['markunread'] = 'Als ungelesen';
 $labels['markflagged'] = 'Markierung hinzufügen';
 $labels['markunflagged'] = 'Markierung entfernen';
+$labels['markundeleted'] = 'Als nicht gelöscht';
 $labels['moreactions'] = 'Mehr ...';
 $labels['markallread'] = 'Alle als gelesen markieren';
 $labels['folders-cur'] = 'Nur ausgewählten Ordner';
@@ -244,6 +242,7 @@ $labels['charset'] = 'Zeichensatz';
 $labels['editortype'] = 'Editor-Typ';
 $labels['returnreceipt'] = 'Empfangsbestätigung (MDN)';
 $labels['dsn'] = 'Übermittlungsbestätigung (DSN)';
+$labels['keepformatting'] = 'Formatierung beibehalten';
 $labels['mailreplyintro'] = 'Am $date, schrieb $sender:';
 $labels['originalmessage'] = 'Originalnachricht';
 $labels['selectimage'] = 'Bild auswählen';
@@ -261,7 +260,6 @@ $labels['keylength'] = 'Bits';
 $labels['keyexpired'] = 'Abgelaufen';
 $labels['keyrevoked'] = 'Widerrufen';
 $labels['bccinstead'] = 'Bcc verwenden';
-$labels['addheader'] = 'Empfänger hinzufügen (Kopfzeile)';
 $labels['insert'] = 'Hinzufügen';
 $labels['insertcontact'] = 'Kontakt(e) einfügen';
 $labels['recipient'] = 'Empfänger';
@@ -575,6 +573,7 @@ $labels['replyallmode'] = 'Standard Funktion für [Allen antworten]';
 $labels['replyalldefault'] = 'Allen antworten';
 $labels['replyalllist'] = 'Nur der Mailing-Liste antworten (falls vorhanden)';
 $labels['allmessages'] = 'Für alle Nachrichten';
+$labels['olderxdays'] = 'älter als $x Tage';
 $labels['folder'] = 'Ordner';
 $labels['folders'] = 'Ordner';
 $labels['foldername'] = 'Ordnername';

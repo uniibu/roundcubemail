@@ -10,8 +10,6 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/messages/
 */
 
 $messages['errortitle']  = 'Произошла ошибка!';
@@ -82,7 +80,7 @@ $messages['errorcopying'] = 'Не удалось скопировать сооб
 $messages['errordeleting'] = 'Не удалось удалить сообщение(я).';
 $messages['errormarking'] = 'Не удалось пометить сообщение(я).';
 $messages['alerttitle'] = 'Внимание';
-$messages['confirmationtitle'] = 'Вы уверены...';
+$messages['confirmationtitle'] = 'Внимание';
 $messages['deletecontactconfirm']  = 'Вы действительно хотите удалить выделенные контакты?';
 $messages['deletegroupconfirm']  = 'Вы действительно хотите удалить выделенную группу?';
 $messages['deletemessagesconfirm'] = 'Вы действительно хотите удалить выбранные сообщения?';
@@ -102,12 +100,11 @@ $messages['nopagesizewarning'] = 'Пожалуйста, введите разм�
 $messages['nosenderwarning'] = 'Пожалуйста, введите адрес электронной почты отправителя.';
 $messages['recipientsadded'] = 'Получатель(и) успешно добавлен.';
 $messages['norecipientwarning'] = 'Пожалуйста, введите хотя бы одного получателя.';
-$messages['disclosedrecipwarning'] = 'Все получатели будут видеть адреса друг друга. Чтобы избежать этого и защитить свою частную жизнь, вы можете использовать поле BCC.';
 $messages['disclosedreciptitle'] = 'Слишком много внешних получателей';
 $messages['nosubjectwarning']  = 'Поле Тема не заполнено. Хотите заполнить его сейчас?';
 $messages['nosubjecttitle']  = 'Без темы';
 $messages['nobodywarning'] = 'Отправить сообщение без текста?';
-$messages['notsentwarning'] = 'Сообщение не отправлено и имеет несохранённые изменения. Вы хотите отменить ваши изменения?';
+$messages['notsentwarning'] = 'Текущее сообщение не отправлено и не сохранено. Удалить его?';
 $messages['restoresavedcomposedata'] = 'Найдено ранее составленное, но неотправленное сообщение.\n\nТема: $subject\nСохранено: $date\n\nХотите восстановить это сообщение?';
 $messages['nosearchname'] = 'Пожалуйста, введите имя или адрес E-Mail';
 $messages['notuploadedwarning'] = 'Вложения загружены не полностью. Подождите или отмените загрузку.';
@@ -160,7 +157,6 @@ $messages['nogroupassignmentschanged'] = 'Распределение по гру
 $messages['importwait'] = 'Импортирование, пожалуйста, подождите...';
 $messages['importformaterror'] = 'Ошибка импорта! Загруженный файл имеет неизвестный  формат данных.';
 $messages['importconfirm'] = '<b>Успешно импортировано $inserted контактов</b>';
-$messages['importconfirmskipped'] = '<b>Пропущено $skipped существующих записей</b>';
 $messages['importmessagesuccess'] = '$nr сообщений успешно импортировано.';
 $messages['importmessageerror'] = 'Сбой импорта! Загруженный файл не является файлом сообщения или почтового ящика';
 $messages['opnotpermitted'] = 'Действие запрещено!';

@@ -1,5 +1,7 @@
 #!/usr/bin/env php
+# shellcheck disable=all
 <?php
+
 /*
  +-----------------------------------------------------------------------+
  | This file is part of the Roundcube Webmail client                     |
@@ -17,14 +19,13 @@
  +-----------------------------------------------------------------------+
 */
 
-define('INSTALL_PATH', realpath(__DIR__ . '/..') . '/' );
+define('INSTALL_PATH', realpath(__DIR__ . '/..') . '/');
 
-require INSTALL_PATH.'program/include/clisetup.php';
+require INSTALL_PATH . 'program/include/clisetup.php';
 
 if (!empty($_SERVER['argv'][1])) {
     $days = intval($_SERVER['argv'][1]);
-}
-else {
+} else {
     $days = 7;
 }
 

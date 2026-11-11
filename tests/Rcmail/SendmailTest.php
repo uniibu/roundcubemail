@@ -1,0 +1,523 @@
+<?php
+
+namespace Roundcube\Tests\Rcmail;
+
+use PHPUnit\Framework\Attributes\DataProvider;
+use Roundcube\Tests\ActionTestCase;
+
+/**
+ * Test class to test rcmail_sendmail class
+ */
+class SendmailTest extends ActionTestCase
+{
+    /**
+     * Test rcmail_sendmail::headers_input()
+     */
+    public function test_headers_input()
+    {
+        $_POST = [
+            '_subject' => "Test1\nTest2\rTest3",
+            '_from' => 'Sender <test@domain.tld>',
+        ];
+
+        $sendmail = new \rcmail_sendmail();
+        $headers = $sendmail->headers_input();
+
+        $this->assertSame('Test1 Test2 Test3', $headers['Subject']);
+        $this->assertSame('Sender <test@domain.tld>', $headers['From']);
+        $this->assertSame('undisclosed-recipients:;', $headers['To']);
+        $this->assertSame('test@domain.tld', $headers['X-Sender']);
+    }
+
+    /**
+     * Test rcmail_sendmail::set_message_encoding()
+     */
+    public function test_set_message_encoding()
+    {
+        $this->markTestIncomplete();
+    }
+
+    /**
+     * Test rcmail_sendmail::create_message()
+     */
+    public function test_create_message()
+    {
+        $this->markTestIncomplete();
+    }
+
+    /**
+     * Test rcmail_sendmail::deliver_message()
+     */
+    public function test_deliver_message()
+    {
+        $this->markTestIncomplete();
+    }
+
+    /**
+     * Test rcmail_sendmail::save_message()
+     */
+    public function test_save_message()
+    {
+        $this->markTestIncomplete();
+    }
+
+    /**
+     * Test rcmail_sendmail::header_received()
+     */
+    public function test_header_received()
+    {
+        $_SERVER['REMOTE_ADDR'] = '1.2.3.4';
+        $_SERVER['HTTP_X_FORWARDED_FOR'] = '203.0.113.5';
+        $_SERVER['HTTP_X_REAL_IP'] = '';
+        $_SERVER['SERVER_PROTOCOL'] = 'HTTP/1.0';
+
+        $sendmail = new \rcmail_sendmail();
+        $config = \rcmail::get_instance()->config;
+
+        $config->set('http_received_header', false);
+        $config->set('http_received_header_encrypt', false);
+        $config->set('proxy_whitelist', []);
+
+        // Disabled option
+        $header = $sendmail->header_received();
+        $this->assertNull($header);
+
+        // Enabled option
+        $config->set('http_received_header', true);
+        $this->assertStringStartsWith(
+            'from [1.2.3.4] by localhost with HTTP (HTTP/1.0 GET);',
+            $sendmail->header_received()
+        );
+
+        // With whitelisted proxy
+        $config->set('proxy_whitelist', ['1.0.0.0/8']);
+        $this->assertStringStartsWith(
+            "from [203.0.113.5] via [1.2.3.4] by localhost with HTTP (HTTP/1.0\r\n\tGET);",
+            $sendmail->header_received()
+        );
+
+        // Encrypted
+        $config->set('http_received_header_encrypt', true);
+        $this->assertMatchesRegularExpression(
+            '|^from [0-9a-zA-Z=/+]+ via [0-9a-zA-Z=/+]+ by\r\n\tlocalhost with HTTP|',
+            $sendmail->header_received()
+        );
+    }
+
+    /**
+     * Test rcmail_sendmail::get_identity()
+     */
+    public function test_get_identity()
+    {
+        self::initDB('identities');
+        self::initUser();
+
+        $db = \rcmail::get_instance()->get_dbh();
+        $query = $db->query('SELECT * FROM `identities` WHERE `standard` = 1 LIMIT 1');
+        $identity = $db->fetch_assoc($query);
+        $sendmail = new \rcmail_sendmail();
+
+        $result = $sendmail->get_identity($identity['identity_id']);
+
+        $this->assertSame($identity['identity_id'], $result['identity_id']);
+        $this->assertSame('test <test@example.com>', $result['string']);
+        $this->assertSame('test@example.com', $result['mailto']);
+    }
+
+    /**
+     * Test rcmail_sendmail::extract_inline_images()
+     */
+    public function test_extract_inline_images()
+    {
+        $message = new \Mail_mime("\r\n");
+        $message->setHTMLBody('<body></body>');
+        \rcmail_sendmail::extract_inline_images($message, 'test@test.com');
+        $this->assertSame('<body></body>', $message->getMessageBody());
+
+        $message = new \Mail_mime("\r\n");
+        $ctype = "test/test\r\nX-Inject:test";
+        $b64 = base64_encode(file_get_contents(__DIR__ . '/../src/logo.jpg'));
+        $message->setHTMLBody('<body><img title="" src="data:' . $ctype . ';base64,' . $b64 . '"></body>');
+        \rcmail_sendmail::extract_inline_images($message, 'test@test.com');
+
+        $body = $message->getMessageBody();
+        $this->assertStringContainsString('Content-Type: image/jpeg', $body);
+        $this->assertStringContainsString('Content-Disposition: inline', $body);
+        $this->assertStringContainsString('size=10549', $body);
+        $this->assertStringContainsString(substr($b64, 0, 32), $body);
+        $this->assertMatchesRegularExpression('/name=[a-f0-9]+\.jpeg/', $body);
+        $this->assertMatchesRegularExpression('/<img title=3D"" src=3D"cid:[a-f0-9]+@test\.com"/', $body);
+        $this->assertMatchesRegularExpression('/Content-ID: <[a-f0-9]+@test\.com>/', $body);
+    }
+
+    /**
+     * @dataProvider provide_email_input_format_cases
+     */
+    #[DataProvider('provide_email_input_format_cases')]
+    public function test_email_input_format($input, $output, $charset)
+    {
+        $sendmail = new \rcmail_sendmail();
+        $sendmail->options['charset'] = $charset;
+
+        $this->assertSame($output, $sendmail->email_input_format($input));
+    }
+
+    /**
+     * Data for test_convert()
+     */
+    public static function provide_email_input_format_cases(): iterable
+    {
+        return [
+            [
+                'name <t@domain.jp>',
+                'name <t@domain.jp>',
+                'UTF-8',
+            ],
+            [
+                '"first last" <t@domain.jp>',
+                'first last <t@domain.jp>',
+                'UTF-8',
+            ],
+            [
+                '"first last" <t@domain.jp>, test2@domain.tld,',
+                'first last <t@domain.jp>, test2@domain.tld',
+                'UTF-8',
+            ],
+            [
+                '<test@domain.tld>',
+                'test@domain.tld',
+                'UTF-8',
+            ],
+            [
+                'test@domain.tld',
+                'test@domain.tld',
+                'UTF-8',
+            ],
+            [
+                'test@domain.tld.', // #7899
+                'test@domain.tld',
+                'UTF-8',
+            ],
+            [
+                'ö <t@test.com>',
+                'ö <t@test.com>',
+                null,
+            ],
+            [
+                base64_decode('GyRCLWo7M3l1OSk2SBsoQg==') . ' <t@domain.jp>',
+                '=?ISO-2022-JP?B?GyRCLWo7M3l1OSk2SBsoQg==?= <t@domain.jp>',
+                'ISO-2022-JP',
+            ],
+            [
+                'test@тест.рф.', // #8493
+                'test@xn--e1aybc.xn--p1ai',
+                'UTF-8',
+            ],
+            [
+                '"x\rBcc: attacker@evil.example\rX-Pad: p" <victim@example.com>',
+                '"x Bcc: attacker@evil.example X-Pad: p" <victim@example.com>',
+                null,
+            ],
+        ];
+    }
+
+    /**
+     * Test rcmail_sendmail::generic_message_footer()
+     */
+    public function test_generic_message_footer()
+    {
+        $this->markTestIncomplete();
+    }
+
+    /**
+     * Test rcmail_sendmail::draftinfo_encode() and draftinfo_decode()
+     */
+    public function test_draftinfo_encode_and_decode()
+    {
+        $input = ['test' => 'test'];
+        $result = \rcmail_sendmail::draftinfo_encode($input);
+        $this->assertSame('test=test', $result);
+        $this->assertSame($input, \rcmail_sendmail::draftinfo_decode($result));
+
+        $input = ['folder' => 'test'];
+        $result = \rcmail_sendmail::draftinfo_encode($input);
+        $this->assertSame('folder=B::dGVzdA==', $result);
+        $this->assertSame($input, \rcmail_sendmail::draftinfo_decode($result));
+
+        $input = ['test' => 'test;test'];
+        $result = \rcmail_sendmail::draftinfo_encode($input);
+        $this->assertSame('test=B::dGVzdDt0ZXN0', $result);
+        $this->assertSame($input, \rcmail_sendmail::draftinfo_decode($result));
+
+        $input = ['test' => 'test;test', 'a' => 'b'];
+        $result = \rcmail_sendmail::draftinfo_encode($input);
+        $this->assertSame('test=B::dGVzdDt0ZXN0; a=b', $result);
+        $this->assertSame($input, \rcmail_sendmail::draftinfo_decode($result));
+    }
+
+    /**
+     * Test rcmail_sendmail::headers_output()
+     */
+    public function test_headers_output()
+    {
+        $message = new \stdClass();
+        $message->headers = new \rcube_message_header();
+        $message->headers->charset = 'UTF-8';
+        $message->headers->to = '';
+        $message->headers->from = '';
+        $message->headers->cc = '';
+
+        $sendmail = new \rcmail_sendmail();
+        $sendmail->options['charset'] = RCUBE_CHARSET;
+        $sendmail->options['message'] = $message;
+
+        $result = $sendmail->headers_output(['part' => 'to']);
+        $this->assertTrue(str_contains($result, '<textarea name="_to" spellcheck="false"></textarea>'));
+
+        $result = $sendmail->headers_output(['part' => 'from']);
+        $this->assertTrue(str_contains($result, '<input name="_from" class="from_address" type="text">'));
+
+        // TODO: Test part=from with identities
+        $this->markTestIncomplete();
+    }
+
+    /**
+     * Test rcmail_sendmail::reply_subject()
+     */
+    public function test_reply_subject()
+    {
+        $this->assertSame('Re: Test subject', \rcmail_sendmail::reply_subject('Test subject'));
+        $this->assertSame('Re: Test subject', \rcmail_sendmail::reply_subject('Re: Test subject'));
+        $this->assertSame('Re: Test subject', \rcmail_sendmail::reply_subject('Re: Re: Test subject'));
+        $this->assertSame('Re: Test subject', \rcmail_sendmail::reply_subject('Re: Test subject (Was: Something else)'));
+    }
+
+    /**
+     * Test rcmail_sendmail::compose_subject()
+     */
+    public function test_compose_subject()
+    {
+        $sendmail = new \rcmail_sendmail();
+        $sendmail->options['charset'] = RCUBE_CHARSET;
+        $sendmail->options['mode'] = \rcmail_sendmail::MODE_REPLY;
+
+        $_POST = ['_subject' => 'test'];
+
+        $result = $sendmail->compose_subject([]);
+
+        $this->assertTrue(str_contains($result, '<input name="_subject" spellcheck="true" value="test" type="text">'));
+    }
+
+    /**
+     * Test rcmail_sendmail::mdn_checkbox()
+     */
+    public function test_mdn_checkbox()
+    {
+        $sendmail = new \rcmail_sendmail();
+        $sendmail->options['charset'] = RCUBE_CHARSET;
+        $sendmail->options['mode'] = \rcmail_sendmail::MODE_REPLY;
+
+        $result = $sendmail->mdn_checkbox([]);
+
+        $this->assertTrue(str_contains($result, '<input id="receipt" name="_mdn" value="1" type="checkbox">'));
+    }
+
+    /**
+     * Test rcmail_sendmail::dsn_checkbox()
+     */
+    public function test_dsn_checkbox()
+    {
+        $sendmail = new \rcmail_sendmail();
+        $sendmail->options['charset'] = RCUBE_CHARSET;
+        $sendmail->options['mode'] = \rcmail_sendmail::MODE_REPLY;
+
+        $result = $sendmail->dsn_checkbox([]);
+
+        $this->assertTrue(str_contains($result, '<input id="dsn" name="_dsn" value="1" type="checkbox">'));
+    }
+
+    /**
+     * Test rcmail_sendmail::priority_selector()
+     */
+    public function test_priority_selector()
+    {
+        $sendmail = new \rcmail_sendmail();
+        $sendmail->options['charset'] = RCUBE_CHARSET;
+        $sendmail->options['mode'] = \rcmail_sendmail::MODE_REPLY;
+
+        $result = $sendmail->priority_selector([]);
+
+        $expected = '<select name="_priority">' . "\n"
+            . '<option value="5">Lowest</option>'
+            . '<option value="4">Low</option>'
+            . '<option value="0" selected="selected">Normal</option>'
+            . '<option value="2">High</option>'
+            . '<option value="1">Highest</option>'
+            . '</select>';
+
+        $this->assertTrue(str_contains($result, $expected));
+    }
+
+    /**
+     * Test rcmail_sendmail::identity_select()
+     */
+    public function test_identity_select()
+    {
+        $message = new \stdClass();
+        $message->headers = new \rcube_message_header();
+        $message->headers->charset = 'UTF-8';
+        $message->headers->to = '';
+        $message->headers->from = '';
+        $message->headers->cc = '';
+
+        $result = \rcmail_sendmail::identity_select($message, []);
+        $this->assertNull($result);
+
+        $identities = [
+            [
+                'identity_id' => 1,
+                'user_id' => 1,
+                'standard' => 1,
+                'name' => 'Default',
+                'email' => 'default@domain.tld',
+                'email_ascii' => 'default@domain.tld',
+                'ident' => 'Default <default@domain.tld>',
+            ],
+            [
+                'identity_id' => 2,
+                'user_id' => 1,
+                'standard' => 0,
+                'name' => 'Identity One',
+                'email' => 'ident1@domain.tld',
+                'email_ascii' => 'ident1@domain.tld',
+                'ident' => '"Identity One" <ident1@domain.tld>',
+            ],
+            [
+                'identity_id' => 3,
+                'user_id' => 1,
+                'standard' => 0,
+                'name' => 'Identity Two',
+                'email' => 'ident2@domain.tld',
+                'email_ascii' => 'ident2@domain.tld',
+                'ident' => '"Identity Two" <ident2@domain.tld>',
+            ],
+        ];
+
+        $message->headers->to = 'ident2@domain.tld';
+        $message->headers->from = 'from@other.domain.tld';
+
+        $result = \rcmail_sendmail::identity_select($message, $identities);
+        $this->assertSame($identities[2], $result);
+
+        $message->headers->to = 'ident1@domain.tld';
+        $message->headers->from = 'from@other.domain.tld';
+
+        $result = \rcmail_sendmail::identity_select($message, $identities);
+        $this->assertSame($identities[1], $result);
+
+        // #7211
+        $message->headers->to = 'ident1@domain.tld';
+        $message->headers->from = 'ident2@domain.tld';
+
+        $result = \rcmail_sendmail::identity_select($message, $identities);
+        $this->assertSame($identities[1], $result);
+
+        $message->headers->to = 'ident2@domain.tld';
+        $message->headers->from = 'ident1@domain.tld';
+
+        $result = \rcmail_sendmail::identity_select($message, $identities);
+        $this->assertSame($identities[2], $result);
+    }
+
+    /**
+     * Test identities selection using Return-Path header
+     */
+    public function test_identity_select_return_path()
+    {
+        $identities = [
+            [
+                'name' => 'Test',
+                'email_ascii' => 'addr@domain.tld',
+                'ident' => 'Test <addr@domain.tld>',
+            ],
+            [
+                'name' => 'Test',
+                'email_ascii' => 'thing@domain.tld',
+                'ident' => 'Test <thing@domain.tld>',
+            ],
+            [
+                'name' => 'Test',
+                'email_ascii' => 'other@domain.tld',
+                'ident' => 'Test <other@domain.tld>',
+            ],
+        ];
+
+        $message = new \stdClass();
+        $message->headers = new \rcube_message_header();
+        $message->headers->set('Return-Path', '<some_thing@domain.tld>');
+        $res = \rcmail_sendmail::identity_select($message, $identities);
+
+        $this->assertSame($identities[0], $res);
+
+        $message->headers->set('Return-Path', '<thing@domain.tld>');
+        $res = \rcmail_sendmail::identity_select($message, $identities);
+
+        $this->assertSame($identities[1], $res);
+    }
+
+    /**
+     * Test identities selection (#1489378)
+     */
+    public function test_identity_select_more()
+    {
+        $identities = [
+            [
+                'name' => 'Test 1',
+                'email_ascii' => 'addr1@domain.tld',
+                'ident' => 'Test 1 <addr1@domain.tld>',
+            ],
+            [
+                'name' => 'Test 2',
+                'email_ascii' => 'addr2@domain.tld',
+                'ident' => 'Test 2 <addr2@domain.tld>',
+            ],
+            [
+                'name' => 'Test 3',
+                'email_ascii' => 'addr3@domain.tld',
+                'ident' => 'Test 3 <addr3@domain.tld>',
+            ],
+            [
+                'name' => 'Test 4',
+                'email_ascii' => 'addr2@domain.tld',
+                'ident' => 'Test 4 <addr2@domain.tld>',
+            ],
+        ];
+
+        $message = new \stdClass();
+        $message->headers = new \rcube_message_header();
+
+        $message->headers->set('From', '<addr2@domain.tld>');
+        $res = \rcmail_sendmail::identity_select($message, $identities);
+        $this->assertSame($identities[1], $res);
+
+        $message->headers->set('From', 'Test 2 <addr2@domain.tld>');
+        $res = \rcmail_sendmail::identity_select($message, $identities);
+        $this->assertSame($identities[1], $res);
+
+        $message->headers->set('From', 'Other <addr2@domain.tld>');
+        $res = \rcmail_sendmail::identity_select($message, $identities);
+        $this->assertSame($identities[1], $res);
+
+        $message->headers->set('From', 'Test 4 <addr2@domain.tld>');
+        $res = \rcmail_sendmail::identity_select($message, $identities);
+        $this->assertSame($identities[3], $res);
+    }
+
+    /**
+     * Test rcmail_sendmail::collect_recipients()
+     */
+    public function test_collect_recipients()
+    {
+        $this->markTestIncomplete();
+    }
+}

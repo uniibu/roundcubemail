@@ -10,10 +10,7 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/labels/
 */
-
 
 $labels['welcome'] = 'Benvenuto in $product';
 $labels['username'] = 'Nome Utente';
@@ -263,7 +260,6 @@ $labels['keylength'] = 'Bit';
 $labels['keyexpired'] = 'Scaduta';
 $labels['keyrevoked'] = 'Revocata';
 $labels['bccinstead'] = 'Usa ccn';
-$labels['addheader'] = 'Aggiungi destinatario (intestazione)';
 $labels['insert'] = 'Inserisci';
 $labels['insertcontact'] = 'Aggiungi contatto(i)';
 $labels['recipient'] = 'Destinatario';
@@ -444,7 +440,7 @@ $labels['importgroups'] = 'Importa le assegnazioni di gruppo';
 $labels['importgroupsall'] = 'Tutti (crea i gruppi se necessario)';
 $labels['importgroupsexisting'] = 'Solo per i gruppi esistenti';
 $labels['importdesc'] = 'Puoi importare i contatti da una rubrica esistente.<br/>Attualmente è possibile l\'importazione di indirizzi in formato <a href="https://en.wikipedia.org/wiki/VCard">vCard</a> o CSV.';
-$labels['importmapdesc'] = 'Conferma che la mappatura dei campi di seguito sia corretta prima di procedere con l\'importazione dei dati CSV (separati da virgole).';
+$labels['importmapdesc'] = 'Conferma che la mappatura dei campi di seguito sia corretta prima di procedere con l\'importazione dei dati CSV (separati da virgola).';
 $labels['fieldnotmapped'] = 'Campo non mappato (non importare)';
 $labels['skipheader'] = 'Non importare la prima riga (intestazioni)';
 $labels['done'] = 'Fatto';
@@ -526,7 +522,7 @@ $labels['advancedoptions'] = 'Opzioni avanzate';
 $labels['toggleadvancedoptions'] = 'Passa alle impostazioni avanzate';
 $labels['focusonnewmessage'] = 'Attiva la finestra del browser all\'arrivo di un nuovo messaggio';
 $labels['checkallfolders'] = 'Controlla tutte le cartelle per la presenza di nuovi messaggi';
-$labels['displaynext'] = 'Visualizza la voce successiva dell\'elenco dopo cancella/sposta';
+$labels['displaynext'] = 'Visualizza la voce successiva dell\'elenco dopo l\'eliminazione/spostamento';
 $labels['defaultfont'] = 'Carattere standard per messaggi in HTML';
 $labels['mainoptions'] = 'Opzioni principali';
 $labels['browseroptions'] = 'Opzioni del browser';

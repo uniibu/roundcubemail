@@ -10,8 +10,6 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/messages/
 */
 
 $messages['errortitle']  = 'Villa kom upp!';
@@ -25,6 +23,7 @@ $messages['servererrormsg'] = 'Villa í þjóni: $msg';
 $messages['accountlocked'] = 'Of margar tilraunir til innskráningar. Reyndu aftur síðar.';
 $messages['connerror'] = 'Villa í tengingu (mistókst að ná í þjóninn)!';
 $messages['dberror'] = 'Villa í gagnagrunni!';
+$messages['dbconnerror'] = 'Tókst ekki að tengjast gagnagrunninum!';
 $messages['windowopenerror'] = 'Lokað var á sprettgluggann!';
 $messages['requesttimedout'] = 'Fyrirspurn féll á tíma';
 $messages['errorreadonly'] = 'Tókst ekki að framkvæma aðgerð. Mappa er skrifvarin.';
@@ -57,6 +56,9 @@ $messages['contactexists'] = 'Tengiliður með sama nafn er þegar skráður í 
 $messages['contactnameexists'] = 'Tengiliður með sama nafn er þegar skráður í netfangaskrána.';
 $messages['blockedimages'] = 'Til verndar hefur verið lokað á allar fjartengdar myndir í þessum skilaboðum.';
 $messages['blockedresources'] = 'Til verndar hefur verið lokað á öll fjartengd tilföng.';
+$messages['suspiciousemail'] = 'Þessi skilaboð innihalda grunsamleg tölvupóstföng sem gætu verið tilraun til svika.';
+$messages['bccemail'] = 'Áframsendu skilaboðin innihalda leynilega viðtakendur (Bcc).';
+$messages['bouncehint'] = 'Þessi skilaboð verða send án nokkurra breytinga, þ.e.a.s. með upprunalegu meginmáli, haus og viðtakendum.';
 $messages['encryptedmessage'] = 'Þetta eru dulrituð skilaboð og því er ekki hægt að birta þau!';
 $messages['externalmessagedecryption'] = 'Þetta eru dulrituð skilaboð og er hægt að afkóða þau með vafraviðbótinni.';
 $messages['nopubkeyfor'] = 'Enginn gildur dreifilykill fannst fyrir $email';
@@ -117,11 +119,14 @@ $messages['nospellerrors'] = 'Engar innsláttarvillur fundust';
 $messages['folderdeleted'] = 'Möppu var eytt';
 $messages['foldersubscribed'] = 'Tókst að setja möppu í áskrift.';
 $messages['folderunsubscribed'] = 'Tókst að taka möppu úr áskrift.';
+$messages['folderpurged'] = 'Tókst að tæma möppu.';
+$messages['folderexpunged'] = 'Tókst að þjappa möppu.';
 $messages['deletedsuccessfully'] = 'Tókst að eyða.';
 $messages['converting'] = 'Fjarlægi snið...';
 $messages['messageopenerror'] = 'Gat ekki hlaðið skilaboðum inn af póstþjóni.';
 $messages['filelinkerror'] = 'Mistókst að hengja við skrá.';
 $messages['fileuploaderror'] = 'Innsending skráar mistókst.';
+$messages['csvfilemismatch'] = 'Innflutningur á mörgum CSV-skrám með mismunandi gagnasviðum er ekki studdur.';
 $messages['filesizeerror'] = 'Innsenda skráin er yfir $size leyfilegri stærð.';
 $messages['filecounterror'] = 'Þú getur í mesta lagi sent inn $count skrár í einu.';
 $messages['msgsizeerror'] = 'Mistókst að hengja við skrá. Fór yfir leyfilega hámarksstærð ($size) skilaboða.';
@@ -153,7 +158,9 @@ $messages['nogroupassignmentschanged'] = 'Engin breyting á úthlutun hópa.';
 $messages['importwait'] = 'Flyt inn, bíddu aðeins...';
 $messages['importformaterror'] = 'Innflutningur mistókst! Innsenda skráin er ekki gild gagnainnflutningsskrá';
 $messages['importconfirm'] = '<b>Tókst að flytja inn $inserted tengiliði</b>';
-$messages['importconfirmskipped'] = '<b>Sleppti $skipped fyrirliggjandi færslum</b>';
+$messages['importconfirmskipped'] = '<b>Sleppti $skipped fyrirliggjandi tengiliðum</b>';
+$messages['importconfirminvalid'] = '<b>Sleppti $skipped ógildum tengiliðum</b>';
+$messages['importconfirmerrors'] = 'Mistókst að flytja inn $skipped gilda tengiliði</b>';
 $messages['importmessagesuccess'] = 'Tókst að flytja inn $nr skilaboð';
 $messages['importmessageerror'] = 'Innflutningur mistókst! Innsenda skráin er ekki gild skilaboða- eða pósthólfsskrá';
 $messages['opnotpermitted'] = 'Aðgerð ekki leyfð!';
@@ -217,6 +224,11 @@ $messages['clicktocompose'] = 'Smelltu hér til að búa til ný skilaboð';
 $messages['nosupporterror'] = 'Þessi eiginleiki er ekki studdur af vafranum þínum.';
 $messages['siginserted'] = 'Tókst að setja inn undirskrift.';
 $messages['responseinserted'] = 'Tókst að setja inn svar.';
+$messages['noresponsesavailable'] = 'Engin svör tiltæk';
 $messages['listempty'] = 'Listinn er tómur.';
 $messages['listusebutton'] = 'Notaðu \'Búa til\' hnappinn til að bæta við færslu.';
 $messages['keypaircreatesuccess'] = 'Tókst að útbúa nýtt lyklapar fyrir $identity.';
+$messages['emptyattachment'] = 'Þetta viðhengi lítur út fyrir að vera tómt. <br>Hafðu samband við þann sem sendi þetta.';
+$messages['oauthloginfailed'] = 'OAuth-innskráning mistókst. Reyndu aftur.';
+$messages['oauthinvalidrequest'] = 'Auðkenningarbeiðni var ógild eða ófullgerð.';
+$messages['oauthaccessdenied'] = 'Auðkenningarþjónn eða notandi höfnuðu beiðninni.';

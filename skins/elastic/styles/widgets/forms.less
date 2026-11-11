@@ -249,7 +249,7 @@ input.smart-upload {
         margin: 0;
 
         select {
-            width: 8rem;
+            width: fit-content;
             margin-top: .5rem;
         }
     }
@@ -959,23 +959,50 @@ html.ms .propform {
         .style-input-focus();
     }
 
-    .recipient {
-        display: flex;
-        position: relative;
-        max-width: ~"calc(50% - 3px)";
-        border: 1px solid @color-recipient-input-border;
-        background-color: @color-recipient-input-background;
-        border-radius: .25em;
-        padding: 0 .25em;
-        margin-top: @recipient-input-margin-fix;
-        margin-right: .2em;
-        white-space: nowrap;
-        cursor: default;
+    li {
+        max-width: 100%;
 
-        @media screen and (max-width: 450px) {
-            width: 100%;
-            max-width: 100%;
+        &:not(.recipient) {
+            user-select: text;
         }
+
+        &.input {
+            flex: 1;
+            min-width: 100px;
+        }
+    }
+
+    input {
+        width: 100%;
+        background: transparent !important;
+        border: 0 !important;
+        margin-top: @recipient-input-margin-fix;
+        outline: 0;
+        line-height: 1.5;
+
+        &::-ms-clear {
+            display: none; // removes clear icon in IE11
+        }
+    }
+}
+
+.recipient-input li.recipient,
+body > li.recipient.ui-sortable-helper {
+    display: flex;
+    position: relative;
+    max-width: ~"calc(50% - 3px)";
+    border: 1px solid @color-recipient-input-border;
+    background-color: @color-recipient-input-background;
+    border-radius: .25rem;
+    padding: 0 .25rem;
+    margin-top: @recipient-input-margin-fix;
+    margin-right: .2em;
+    white-space: nowrap;
+    cursor: default;
+
+    @media screen and (max-width: 450px) {
+        width: 100%;
+        max-width: 100%;
     }
 
     .name {
@@ -1011,30 +1038,9 @@ html.ms .propform {
         }
     }
 
-    li {
-        max-width: 100%;
-
-        &:not(.recipient) {
-            user-select: text;
-        }
-
-        &.input {
-            flex: 1;
-            min-width: 100px;
-        }
-    }
-
-    input {
-        width: 100%;
-        background: transparent !important;
-        border: 0 !important;
-        margin-top: @recipient-input-margin-fix;
-        outline: 0;
-        line-height: 1.5;
-
-        &::-ms-clear {
-            display: none; // removes clear icon in IE11
-        }
+    &.ui-sortable-helper {
+        // fix element width while dragging
+        padding: 0 0 0 .25rem !important;
     }
 }
 
@@ -1091,6 +1097,8 @@ html.ms .propform {
             overflow: hidden;
             vertical-align: middle;
             margin-right: .2rem;
+            color: inherit;
+            text-decoration: none;
 
             &:before {
                 &:extend(.font-icon-class);
@@ -1254,6 +1262,12 @@ html.ms .propform {
 
 .form-control {
     color: @color-font;
+
+    // override bootstap default behaviour (specifically prevent .is-invalid issues)
+    &.custom-select {
+        padding-right: 1.75rem;
+        background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px;
+    }
 
     &:focus {
         color: @color-font;

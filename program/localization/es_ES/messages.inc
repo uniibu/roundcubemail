@@ -10,8 +10,6 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/messages/
 */
 
 $messages['errortitle']  = '¡Ha ocurrido un error!';
@@ -25,6 +23,7 @@ $messages['servererrormsg'] = 'Error de servidor: $msg';
 $messages['accountlocked'] = 'Demasiados intentos de conexión fallidos. Inténtalo de nuevo más tarde.';
 $messages['connerror'] = '¡Error de conexión (fallo al intentar alcanzar el servidor)!';
 $messages['dberror'] = '¡Error de base de datos!';
+$messages['dbconnerror'] = '¡No fue posible conectar con la base de datos!';
 $messages['windowopenerror'] = 'iLa ventana emergente fue bloqueada!';
 $messages['requesttimedout'] = 'Ha expirado el tiempo de respuesta';
 $messages['errorreadonly'] = 'No se pudo realizar la operación. La carpeta es de sólo lectura.';
@@ -57,6 +56,9 @@ $messages['contactexists'] = 'Ya existe un contacto con esta dirección de corre
 $messages['contactnameexists'] = 'Ya existe un contacto con el mismo nombre.';
 $messages['blockedimages'] = 'Para proteger su privacidad, las imágenes externas de este mensaje han sido bloqueadas.';
 $messages['blockedresources'] = 'Para proteger su privacidad, los recursos remotos han sido bloqueados.';
+$messages['suspiciousemail'] = 'Este mensaje contiene direcciones de correo electrónico sospechosas que pueden ser fraudulentas.';
+$messages['bccemail'] = 'El o los mensaje(s) reenviados contienen destinatarios confidenciales (Bcc)';
+$messages['bouncehint'] = 'El mensaje será enviado sin ninguna modificación, ej. usando el cuerpo original, encabezados y destinatarios.';
 $messages['encryptedmessage'] = 'Este es un mensaje cifrado y no puede ser mostrado. ¡Lo sentimos!';
 $messages['externalmessagedecryption'] = 'Este es un mensaje cifrado y se puede descifrar con una extensión de tu navegador.';
 $messages['nopubkeyfor'] = 'No se ha encontrado una clave pública de $email';
@@ -98,7 +100,7 @@ $messages['nopagesizewarning'] = 'Por favor, introduzca un tamaño de página.';
 $messages['nosenderwarning'] = 'Por favor, introduzca la dirección de correo del remitente.';
 $messages['recipientsadded'] = 'Destinatario(s) añadido(s) con éxito.';
 $messages['norecipientwarning'] = 'Por favor, introduzca al menos un destinatario.';
-$messages['disclosedrecipwarning'] = 'Todos los receptores verán las direcciones de correo electrónico de cada uno. Para evitarlo y para proteger su privacidad puede utilizar el campo Cco';
+$messages['disclosedrecipwarning'] = 'Todos los destinatarios verán las direcciones de correo de cada uno. Para evitar esto y proteger su privacidad puede usar el campo CCO.';
 $messages['disclosedreciptitle'] = 'Demasiados destinatarios';
 $messages['nosubjectwarning']  = 'El campo "Asunto" está vacío. ¿Desea completarlo en este momento?';
 $messages['nosubjecttitle']  = 'Sin asunto';
@@ -117,6 +119,8 @@ $messages['nospellerrors'] = 'No se encontraron errores ortográficos.';
 $messages['folderdeleted'] = 'Carpeta eliminada correctamente.';
 $messages['foldersubscribed'] = 'Suscrito a carpeta correctamente.';
 $messages['folderunsubscribed'] = 'Suscripción a carpeta anulada correctamente.';
+$messages['folderpurged'] = 'Carpeta vaciada exitosamente';
+$messages['folderexpunged'] = 'Carpeta compactada exitosamente';
 $messages['deletedsuccessfully'] = 'Eliminado correctamente.';
 $messages['converting'] = 'Eliminando formato de mensaje...';
 $messages['messageopenerror'] = 'No se pudo cargar el mensaje del servidor.';
@@ -155,6 +159,8 @@ $messages['importwait'] = 'Importando, por favor espere...';
 $messages['importformaterror'] = '¡La importación falló! El fichero enviado no es un fichero válido de importación de datos.';
 $messages['importconfirm'] = '<b>Se han importado $inserted contactos correctamente</b>';
 $messages['importconfirmskipped'] = '<b>Ignoradas $skipped entradas existentes</b>';
+$messages['importconfirminvalid'] = '<b>Ignorados $skipped contactos inválidos</b>';
+$messages['importconfirmerrors'] = '<b>Fallo al importar $errors contactos válidos</b>';
 $messages['importmessagesuccess'] = '$nr mensajes importados correctamente';
 $messages['importmessageerror'] = '¡La importación falló! El fichero enviado no es un fichero válido de mensaje o buzón de correo.';
 $messages['opnotpermitted'] = '¡Operación no permitida!';
@@ -218,8 +224,11 @@ $messages['clicktocompose'] = 'Hacer clic aquí para escribir un nuevo mensaje';
 $messages['nosupporterror'] = 'Esta función no está soportada por el navegador.';
 $messages['siginserted'] = 'Firma insertada correctamente.';
 $messages['responseinserted'] = 'Respuesta insertada correctamente.';
+$messages['noresponsesavailable'] = 'No hay respuestas disponibles';
 $messages['listempty'] = 'La lista está vacía.';
 $messages['listusebutton'] = 'Use el botón Crear para añadir un nuevo registro.';
 $messages['keypaircreatesuccess'] = 'Un nuevo par de claves ha sido creada con éxito para $identity.';
 $messages['emptyattachment'] = 'Parece que este archivo adjunto está vacío. <br>Por favor, consulta a la persona que lo envió.';
 $messages['oauthloginfailed'] = 'Ha fallado el inicio de sesión OAuth. Por favor, vuelva a intentarlo.';
+$messages['oauthinvalidrequest'] = 'La solicitud de autorización no era válida o estaba incompleta.';
+$messages['oauthaccessdenied'] = 'El servidor de autorización o el usuario denegó la solicitud.';

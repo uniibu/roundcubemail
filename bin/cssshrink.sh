@@ -1,18 +1,21 @@
 #!/bin/sh
 
+PWD=`dirname "$0"`
+BIN=`which csso`
+
 set -e
 
-PWD=`dirname "$0"`
+if [ -e "$PWD/../node_modules/.bin/csso" ]; then
+    BIN="$PWD/../node_modules/.bin/csso"
+fi
 
 do_shrink() {
     rm -f "$2"
-    csso $1 -o $2 --no-restructure
+    $BIN $1 -o $2 --no-restructure
 }
 
-if which csso > /dev/null 2>&1; then
-    :
-else
-    echo "csso not found. Please install e.g. 'npm install -g csso-cli'."
+if [ -z "$BIN" ]; then
+    echo "csso not found. Please run 'npm install'."
     exit 1
 fi
 
@@ -26,7 +29,7 @@ if [ $# -gt 0 ]; then
     exit
 fi
 
-DIRS="$PWD/../skins/* $PWD/../plugins/* $PWD/../plugins/*/skins/*"
+DIRS="$PWD/../skins/* $PWD/../plugins/* $PWD/../plugins/*/skins/*  $PWD/../plugins/*/themes/*"
 # default: compress application scripts
 for dir in $DIRS; do
     for file in $dir/*.css; do

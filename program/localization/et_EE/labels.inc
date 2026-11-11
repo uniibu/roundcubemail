@@ -10,10 +10,7 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/labels/
 */
-
 
 $labels['welcome'] = 'Tere tulemast! See on $product.';
 $labels['username'] = 'Kasutajanimi';
@@ -260,7 +257,6 @@ $labels['keylength'] = 'Bitte';
 $labels['keyexpired'] = 'Aegunud';
 $labels['keyrevoked'] = 'Tühistatud';
 $labels['bccinstead'] = 'Kasuta Pimekoopiat';
-$labels['addheader'] = 'Lisa saaja (päis)';
 $labels['insert'] = 'Lisa';
 $labels['insertcontact'] = 'Lisa kontakt(id)';
 $labels['recipient'] = 'Saaja';
@@ -319,7 +315,7 @@ $labels['addreplyto'] = 'Lisa vastus aadressile';
 $labels['addfollowupto'] = 'Lisa Followup-To';
 $labels['sendreceipt'] = 'Kas saata lugemise kinnitus?';
 $labels['mdnrequest'] = 'Selle kirja saatja soovib saada kinnitust kirja lugemise kohta. Kas soovid kinnituse saata?';
-$labels['receiptread'] = 'Kättesaamiskinnitus (leotud)';
+$labels['receiptread'] = 'Kättesaamiskinnitus (loetud)';
 $labels['yourmessage'] = 'See on sinu saadetud kirja kättesaamiskinnitus';
 $labels['receiptnote'] = 'Märkus: Kättesaamiskinnituse saamine tähendab ainult seda, et saaja on kirja avanud. Pole mingit garantiid, et ta kirja tegelikult luges ja selle sisust aru sai.';
 $labels['sendalwaysto'] = 'Saada alati e-postile $email';

@@ -10,10 +10,7 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/plugin-managesieve/
 */
-
 
 $labels['filters'] = 'Filtri';
 $labels['managefilters'] = 'Gestione dei filtri per la posta in arrivo';
@@ -183,7 +180,7 @@ $labels['user'] = 'user';
 $labels['detail'] = 'dettaglio';
 $labels['comparator'] = 'comparatore:';
 $labels['default'] = 'predefinito';
-$labels['octet'] = 'esatto (octect)';
+$labels['octet'] = 'esatto (octet)';
 $labels['asciicasemap'] = 'non differenziare maiuscole/minuscole (ascii-casemap)';
 $labels['asciinumeric'] = 'numerico (ascii-numeric)';
 $labels['index'] = 'indice:';
@@ -279,7 +276,7 @@ $messages['saveerror'] = 'Impossibile salvare i dati. Errore del server.';
 $messages['vacationsaved'] = 'Dati di vacanza salvati correttamente.';
 $messages['forwardsaved'] = 'Dati di inoltro salvati correttamente.';
 $messages['emptyvacationbody'] = 'Il testo del messaggio non può essere vuoto!';
-$messages['duplicate.conflict.err'] = 'Non sono consentiti intestazione e identificatore univoco.';
+$messages['duplicate.conflict.err'] = 'Sia l\'intestazione che l\'identificatore univoco non sono consentiti.';
 $messages['disabledaction'] = 'Azione non permessa.';
 $messages['lastindexempty'] = 'L\'indice è richiesto quando si conta dalla fine';
 $messages['noflagset'] = 'Deve essere selezionato almeno un flag.';

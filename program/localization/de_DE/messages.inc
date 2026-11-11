@@ -10,8 +10,6 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/messages/
 */
 
 $messages['errortitle']  = 'Ein Fehler ist aufgetreten!';
@@ -25,6 +23,7 @@ $messages['servererrormsg'] = 'Serverfehler: $msg';
 $messages['accountlocked'] = 'Zu viele fehlgeschlagene Anmeldeversuche. Versuchen Sie es später noch einmal.';
 $messages['connerror'] = 'Verbindungsfehler (Fehler beim Erreichen des Servers)!';
 $messages['dberror'] = 'Datenbankfehler!';
+$messages['dbconnerror'] = 'Verbindung zur Datenbank konnte nicht aufgebaut werden!';
 $messages['windowopenerror'] = 'Das Popup-Fenster wurde blockiert!';
 $messages['requesttimedout'] = 'Zeitüberschreitung der Anforderung';
 $messages['errorreadonly'] = 'Die Aktion kann nicht ausgeführt werden. Der Ordner ist schreibgeschützt.';
@@ -57,6 +56,9 @@ $messages['contactexists'] = 'Es existiert bereits ein Kontakt mit dieser E-Mail
 $messages['contactnameexists'] = 'Ein Kontakt mit dem gleichen Namen existiert bereits.';
 $messages['blockedimages'] = 'Um Ihre Privatsphäre zu schützen, wurden externe Bilder blockiert.';
 $messages['blockedresources'] = 'Um Ihre Privatsphäre zu schützen, wurden externe Ressourcen blockiert.';
+$messages['suspiciousemail'] = 'Diese Nachricht enthält eine verdächte eMail-Adresse, die gefälscht sein könnte.';
+$messages['bccemail'] = 'Die weitergeleite(n) Nachricht(en) enthalten vertrauliche Empfänger (Bcc).';
+$messages['bouncehint'] = 'Die Nachricht wird unverändert weitergeleitet, das heißt mit dem Originaltext, Kopfzeilen und Empfänger(n)';
 $messages['encryptedmessage'] = 'Dies ist eine verschlüsselte Nachricht und kann leider nicht angezeigt werden.';
 $messages['externalmessagedecryption'] = 'Dies ist eine verschlüsselte Nachricht und kann mit Ihrer Browser-Erweiterung entschlüsselt werden.';
 $messages['nopubkeyfor'] = 'Kein gültiger öffentlicher Schlüssel für $email gefunden';
@@ -117,8 +119,10 @@ $messages['nospellerrors'] = 'Keine Rechtschreibfehler gefunden.';
 $messages['folderdeleted'] = 'Ordner erfolgreich gelöscht.';
 $messages['foldersubscribed'] = 'Der Ordner wurde erfolgreich abonniert.';
 $messages['folderunsubscribed'] = 'Der Ordner wurde erfolgreich abbestellt.';
+$messages['folderpurged'] = 'Ordner wurde erfolgreich geleert.';
+$messages['folderexpunged'] = 'Ordner wurde erfolgreich ausgeräumt.';
 $messages['deletedsuccessfully'] = 'Erfolgreich gelöscht.';
-$messages['converting'] = 'Formatierungen werden antfernt …';
+$messages['converting'] = 'Formatierungen werden entfernt …';
 $messages['messageopenerror'] = 'Die Nachricht konnte nicht vom Server geladen werden.';
 $messages['filelinkerror'] = 'Anhängen der Datei ist fehlgeschlagen.';
 $messages['fileuploaderror'] = 'Hochladen der Datei fehlgeschlagen.';
@@ -155,6 +159,8 @@ $messages['importwait'] = 'Daten werden importiert, bitte warten …';
 $messages['importformaterror'] = 'Import fehlgeschlagen! Die hochgeladene Datei ist keine gültige Importdatei.';
 $messages['importconfirm'] = '<b>Es wurden $inserted Adressen erfolgreich importiert.</b>';
 $messages['importconfirmskipped'] = '<b>$skipped bestehende Einträge wurden übersprungen.</b>';
+$messages['importconfirminvalid'] = '<b>$invalid ungültige Einträge wurden übersprungen.</b>';
+$messages['importconfirmerrors'] = '<b>$errors gültige Kontakte wurden nicht importiert.</b>';
 $messages['importmessagesuccess'] = 'Nachrichten $nr erfolgreich importiert';
 $messages['importmessageerror'] = 'Import fehlgeschlagen! Die hochgeladene Datei ist keine gültige Importdatei.';
 $messages['opnotpermitted'] = 'Operation nicht erlaubt!';
@@ -218,8 +224,11 @@ $messages['clicktocompose'] = 'Klicken Sie hier, um eine neue Nachricht zu verfa
 $messages['nosupporterror'] = 'Diese Funktion wird von Ihrem Webbrowser nicht unterstützt.';
 $messages['siginserted'] = 'Signatur erfolgreich eingefügt.';
 $messages['responseinserted'] = 'Antwort erfolgreich eingefügt.';
+$messages['noresponsesavailable'] = 'Keine Antworten verfügbar';
 $messages['listempty'] = 'Die Liste ist leer.';
 $messages['listusebutton'] = 'Um einen neuen Datensatz hinzufügen, verwenden Sie bitte die Schaltfläche \'Erstellen\'.';
 $messages['keypaircreatesuccess'] = 'En neues Schlüsselpaar wurde erfolgreich für $identity erstellt.';
 $messages['emptyattachment'] = 'Dieser Anhang scheint leer zu sein.<br>Bitte erkundigen Sie sich bei der Person, die diesen gesendet hat.';
 $messages['oauthloginfailed'] = 'OAuth-Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut.';
+$messages['oauthinvalidrequest'] = 'Die Autorisierungsanfrage war ungültig oder unvollständig.';
+$messages['oauthaccessdenied'] = 'Der Autorisierungsserver oder Benutzer hat die Anfrage abgelehnt. ';

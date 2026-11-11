@@ -10,8 +10,6 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/timezones/
 */
 
 $labels['tz:utc'] = 'Weltzeit (UTC)';
@@ -72,6 +70,7 @@ $labels['tz:europe:brussels'] = 'Brüssel';
 $labels['tz:europe:bucharest'] = 'Bukarest';
 $labels['tz:europe:copenhagen'] = 'Kopenhagen';
 $labels['tz:europe:isle_of_man'] = 'Insel Man';
+$labels['tz:europe:kaliningrad'] = 'Kaliningrad (Königsberg)';
 $labels['tz:europe:kiev'] = 'Kiew';
 $labels['tz:europe:lisbon'] = 'Lissabon';
 $labels['tz:europe:ljubljana'] = 'Laibach';

@@ -10,10 +10,7 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/labels/
 */
-
 
 $labels['welcome'] = 'Добродошли на $product';
 $labels['username'] = 'Корисничко име';
@@ -340,12 +337,12 @@ $labels['typeprofile'] = 'Профил';
 $labels['addfield'] = 'Додај поље...';
 $labels['addcontact'] = 'Додај контакт';
 $labels['editcontact'] = 'Измени контакт';
-$labels['contacts'] = 'Конакти';
+$labels['contacts'] = 'Контакти';
 $labels['contactproperties'] = 'Својства контакта';
 $labels['contactnameandorg'] = 'Име и организација';
 $labels['personalinfo'] = 'Лични подаци';
 $labels['personal'] = 'Лично';
-$labels['contactphoto'] = 'Фоографија контакта';
+$labels['contactphoto'] = 'Фотографија контакта';
 $labels['edit'] = 'Измени';
 $labels['cancel'] = 'Одустани';
 $labels['save'] = 'Сачувај';

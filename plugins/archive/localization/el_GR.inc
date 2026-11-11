@@ -10,8 +10,6 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/plugin-archive/
 */
 
 $labels['buttontext'] = 'Αρχειοθέτηση';
@@ -26,6 +24,8 @@ $labels['archivetypeyear'] = 'Έτος (π.χ. Αρχείο/2012)';
 $labels['archivetypemonth'] = 'Μήνα (π.χ. Αρχείο/2012/06)';
 $labels['archivetypetbmonth'] = 'Μήνας - Συμβατός με Thunderbird (π.χ. Αρχείο/2012/2012-06)';
 $labels['archivetypefolder'] = 'Αρχικός φάκελος';
+$labels['archivetypefolderyear'] = 'Έτος και αρχικός φάκελος (π.χ. Φάκελος/2012/...)';
+$labels['archivetypefoldermonth'] = 'Έτος, μήνας, και αρχικός φάκελος (π.χ. Φάκελος/2012/06/...)';
 $labels['archivetypesender'] = 'Αποστολέας email';
 $labels['unkownsender'] = 'άγνωστο';
 $labels['readonarchive'] = 'Σημείωση του μηνύματος ως αναγνωσμένο στο αρχείο';

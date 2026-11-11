@@ -10,10 +10,7 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/plugin-managesieve/
 */
-
 
 $labels['filters'] = 'フィルター';
 $labels['managefilters'] = '受信メールのフィルターを管理';
@@ -134,6 +131,7 @@ $labels['varlowerfirst'] = '最初の文字を小文字';
 $labels['varupperfirst'] = '最初の文字を大文字';
 $labels['varquotewildcard'] = '特殊文字を引用処理';
 $labels['varlength'] = '長さ';
+$labels['varencodeurl'] = '(URLを)パーセント・エンコード';
 $labels['notify'] = '通知を送信';
 $labels['notifytarget'] = '通知の対象:';
 $labels['notifymessage'] = '通知のメッセージ(任意):';
@@ -266,8 +264,8 @@ $messages['setcreateerror'] = 'フィルターセットを作成できません�
 $messages['setcreated'] = 'フィルターセットを作成しました。';
 $messages['activateerror'] = '選択したフィルターを有効にできません。サーバーでエラーが発生しました。';
 $messages['deactivateerror'] = '選択したフィルターを無効にできません。サーバーでエラーが発生しました。';
-$messages['deactivated'] = 'フィルターを有効にしました。';
-$messages['activated'] = 'フィルターを無効にしました。';
+$messages['deactivated'] = 'フィルターを無効にしました。';
+$messages['activated'] = 'フィルターを有効にしました。';
 $messages['moved'] = 'フィルターを移動しました。';
 $messages['moveerror'] = '選択したフィルターを移動できません。サーバーでエラーが発生しました。';
 $messages['nametoolong'] = '名前が長すぎます。';
@@ -283,3 +281,4 @@ $messages['duplicate.conflict.err'] = 'ヘッダーと一意な識別子の両�
 $messages['disabledaction'] = '許可されていない動作です。';
 $messages['lastindexempty'] = '最後から数える時はインデックスが必要';
 $messages['noflagset'] = '少なくともフラッグを1つ選択しなければなりません。';
+$messages['saving.actionordererror'] = '\'$previous\'の処理は\'$current\'の処理の後でなければなりません。';

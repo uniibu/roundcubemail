@@ -10,8 +10,6 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/plugin-archive/
 */
 
 $labels['buttontext'] = 'Arxiva';
@@ -21,7 +19,7 @@ $labels['archivedreload'] = 'Arxivat correctament. Recarregueu la pàgina per ve
 $labels['archiveerror'] = 'Alguns missatges no s\'han pogut arxivar';
 $labels['archivefolder'] = 'Arxiu';
 $labels['settingstitle'] = 'Arxiu';
-$labels['archivetype'] = 'Divideix arxiu per';
+$labels['archivetype'] = 'Divideix l\'arxiu per';
 $labels['archivetypeyear'] = 'Any (p.ex. Arxiu/2012)';
 $labels['archivetypemonth'] = 'Mes (p.ex. Arxiu/2012/06)';
 $labels['archivetypetbmonth'] = 'Mes - Compatible amb Thunderbird (p.ex. Arxiu/2012/2102-06)';

@@ -10,10 +10,7 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/plugin-managesieve/
 */
-
 
 $labels['filters'] = 'Фільтры';
 $labels['managefilters'] = 'Парадкаваць фільтры атрыманай пошты';
@@ -21,6 +18,7 @@ $labels['filtername'] = 'Назва фільтра';
 $labels['newfilter'] = 'Новы фільтр';
 $labels['filteradd'] = 'Дадаць фільтр';
 $labels['filterdel'] = 'Выдаліць фільтр';
+$labels['actions'] = 'Дзеянні';
 $labels['scope'] = 'Абсяг';
 $labels['moveup'] = 'Пасунуць уверх';
 $labels['movedown'] = 'Пасунуць уніз';
@@ -153,6 +151,7 @@ $labels['spamtestnotequals'] = 'не роўна';
 $labels['vacation.subject'] = 'Тэма';
 $labels['vacation.body'] = 'Цела';
 $labels['vacation.keep'] = 'Пакінуць';
+$labels['vacation.discard'] = 'Адкінуць';
 $labels['duplicate.header'] = 'загаловак:';
 $messages['filterunknownerror'] = 'Невядомая памылка сервера.';
 $messages['filterconnerror'] = 'Не ўдалося злучыцца з серверам.';

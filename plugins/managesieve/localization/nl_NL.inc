@@ -10,10 +10,7 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/plugin-managesieve/
 */
-
 
 $labels['filters'] = 'Filters';
 $labels['managefilters'] = 'Beheer filters voor inkomende e-mail';
@@ -188,8 +185,13 @@ $labels['asciicasemap'] = 'hoofdletterongevoelig (ascii-casemap)';
 $labels['asciinumeric'] = 'numeriek (ascii-numeriek)';
 $labels['index'] = 'index:';
 $labels['indexlast'] = 'terugwaarts';
+$labels['spamtestisgreaterthan'] = 'is groter dan';
+$labels['spamtestisgreaterthanequal'] = 'is groter dan of gelijk aan';
+$labels['spamtestislessthan'] = 'is minder dan';
+$labels['spamtestislessthanequal'] = 'is minder dan of gelijk aan';
 $labels['spamtestequals'] = 'is gelijk aan';
 $labels['spamtestnotequals'] = 'is niet gelijk aan';
+$labels['spamtestisunknown'] = 'is onbekend';
 $labels['vacation'] = 'Afwezigheidsbericht';
 $labels['vacation.reply'] = 'Antwoordbericht';
 $labels['vacation.advanced'] = 'Geavanceerde instellingen';

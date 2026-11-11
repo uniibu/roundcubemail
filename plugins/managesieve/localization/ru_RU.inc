@@ -10,10 +10,7 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/plugin-managesieve/
 */
-
 
 $labels['filters'] = 'Фильтры';
 $labels['managefilters'] = 'Управление фильтрами для входящей почты';
@@ -57,7 +54,7 @@ $labels['messagecopyto'] = 'Скопировать сообщение в';
 $labels['messagesendcopy'] = 'Отправить копию сообщения на';
 $labels['messagereply'] = 'Ответить с сообщением';
 $labels['messagedelete'] = 'Удалить сообщение';
-$labels['messagediscard'] = 'Отбросить с сообщением';
+$labels['messagediscard'] = 'Не принимать и ответить:';
 $labels['messagekeep'] = 'Оставить сообщение во Входящих';
 $labels['messagesrules'] = 'Для входящей почты:';
 $labels['messagesactions'] = '...выполнить следующие действия:';
@@ -216,7 +213,7 @@ $labels['vacation.keep'] = 'Оставить';
 $labels['vacation.discard'] = 'Отменить';
 $labels['vacation.redirect'] = 'Перенаправить на';
 $labels['vacation.copy'] = 'Отправить копию на';
-$labels['forward'] = 'Переслылка';
+$labels['forward'] = 'Пересылка';
 $labels['forward.redirect'] = 'Перенаправить на';
 $labels['forward.copy'] = 'Отправить копию на';
 $labels['forward.on'] = 'Вкл.';

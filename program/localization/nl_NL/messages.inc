@@ -10,8 +10,6 @@
  | any later version with exceptions for skins & plugins.                |
  | See the README file for a full license statement.                     |
  +-----------------------------------------------------------------------+
-
- For translation see https://www.transifex.com/projects/p/roundcube-webmail/resource/messages/
 */
 
 $messages['errortitle']  = 'Er is een fout opgetreden!';
@@ -25,6 +23,7 @@ $messages['servererrormsg'] = 'Serverfout: $msg';
 $messages['accountlocked'] = 'Te veel mislukte inlogpogingen. Probeer het later nogmaals.';
 $messages['connerror'] = 'Verbindingsfout! (Kon de server niet bereiken)';
 $messages['dberror'] = 'Databasefout!';
+$messages['dbconnerror'] = 'Kan geen verbinding maken met de database!';
 $messages['windowopenerror'] = 'Het popup-venster werd geblokkeerd!';
 $messages['requesttimedout'] = 'Verzoek duurde te lang';
 $messages['errorreadonly'] = 'De bewerking kan niet uitgevoerd worden. Map is alleen-lezen.';
@@ -57,6 +56,8 @@ $messages['contactexists'] = 'Er bestaat al een contactpersoon met hetzelfde e-m
 $messages['contactnameexists'] = 'Er bestaat al een contactpersoon met deze naam.';
 $messages['blockedimages'] = 'Om uw privacy te beschermen zijn externe afbeeldingen geblokkeerd in dit bericht.';
 $messages['blockedresources'] = 'Om uw privacy te beschermen zijn externe afbeeldingen geblokkeerd in dit bericht.';
+$messages['suspiciousemail'] = 'Dit bericht bevat e-mailadressen die mogelijk niet te vertrouwen zijn.';
+$messages['bccemail'] = 'De doorgestuurde berichten bevatten vertrouwelijke ontvangers (bcc).';
 $messages['encryptedmessage'] = 'Dit is een versleuteld bericht en kan niet weergegeven worden. Excuses!';
 $messages['externalmessagedecryption'] = 'Dit is een versleuteld bericht en kan ontsleuteld worden met uw browserextensie.';
 $messages['nopubkeyfor'] = 'Geen geldige publieke sleutel gevonden voor $email';
@@ -98,7 +99,7 @@ $messages['nopagesizewarning'] = 'Geef een paginagrootte op.';
 $messages['nosenderwarning'] = 'Voer een e-mailadres van de afzender in.';
 $messages['recipientsadded'] = 'Ontvanger(s) succesvol toegevoegd.';
 $messages['norecipientwarning'] = 'Geef tenminste één ontvanger op.';
-$messages['disclosedrecipwarning'] = 'Ontvangers zien alle e-mail adressen. Gebruik het Bcc veld om de privacy van anderen te beschermen.';
+$messages['disclosedrecipwarning'] = 'Ontvangers kunnen elkaars e-mailadressen zien. Gebruik het bcc-veld om dit te voorkomen en de privacy van de ontvangers te behouden.';
 $messages['disclosedreciptitle'] = 'Te veel publiek ontvangers';
 $messages['nosubjectwarning']  = 'U heeft geen onderwerp ingevoerd. Wilt u nu een onderwerp opgeven?';
 $messages['nosubjecttitle']  = 'Geen onderwerp';
@@ -117,6 +118,8 @@ $messages['nospellerrors'] = 'Geen spelfouten gevonden.';
 $messages['folderdeleted'] = 'Map succesvol verwijderd.';
 $messages['foldersubscribed'] = 'Succesvol geabonneerd op map.';
 $messages['folderunsubscribed'] = 'Abonnement op map succesvol opgezegd.';
+$messages['folderpurged'] = 'Map succesvol geleegd.';
+$messages['folderexpunged'] = 'Map succesvol gecomprimeerd.';
 $messages['deletedsuccessfully'] = 'Met succes verwijderd.';
 $messages['converting'] = 'Opmaak van bericht verwijderen...';
 $messages['messageopenerror'] = 'Kan het bericht niet van de server laden.';
@@ -154,7 +157,6 @@ $messages['nogroupassignmentschanged'] = 'Geen groepstoewijzingen aangepast.';
 $messages['importwait'] = 'Importeren, even geduld...';
 $messages['importformaterror'] = 'Importeren mislukt! Het geüploade bestand is geen geldig importbestand.';
 $messages['importconfirm'] = '<b>$inserted contactpersonen succesvol geïmporteerd</b>';
-$messages['importconfirmskipped'] = '<b>$skipped bestaande contactpersonen overgeslagen</b>';
 $messages['importmessagesuccess'] = '$nr berichten succesvol geïmporteerd';
 $messages['importmessageerror'] = 'Importeren mislukt! Het verstuurde bestand is geen geldig bericht of mailboxbestand';
 $messages['opnotpermitted'] = 'Deze bewerking is niet toegestaan!';
@@ -219,8 +221,10 @@ $messages['clicktocompose'] = 'Klik hier om een nieuw bericht op te stellen';
 $messages['nosupporterror'] = 'Deze eigenschap wordt niet ondersteund door uw webbrowser.';
 $messages['siginserted'] = 'Handtekening succesvol toegevoegd.';
 $messages['responseinserted'] = 'Antwoord succesvol ingevoegd.';
+$messages['noresponsesavailable'] = 'Geen antwoorden beschikbaar';
 $messages['listempty'] = 'De lijst is leeg.';
 $messages['listusebutton'] = 'Gebruik de Nieuw knop om een nieuwe record toe te voegen.';
 $messages['keypaircreatesuccess'] = 'Aan nieuw sleutelpaar werd met succes aangemaakt voor de identiteit $identity.';
 $messages['emptyattachment'] = 'Deze bijlage lijkt leeg te zijn.<br>Check het met de persoon die dit verzonden heeft.';
 $messages['oauthloginfailed'] = 'OAuth login is mislukt. Probeer het opnieuw.';
+$messages['oauthaccessdenied'] = 'Het verzoek is afgewezen door de autorisatieserver of door de gebruiker.';
